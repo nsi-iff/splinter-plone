@@ -1,0 +1,7 @@
+   >>> self.portal_login_as_owner()
+   >>> self.portal_logout()
+   >>> self.portal_adduser_as_manager('manager','manager')
+   >>> self.portal_login('manager','manager')
+   >>> self.portal_logout()
+   >>> self.portal_home()
+   >>> self.portal_visit('search')
