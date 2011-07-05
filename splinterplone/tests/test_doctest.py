@@ -10,7 +10,7 @@ def test_suite():
     return unittest.TestSuite([
 
         ztc.ZopeDocFileSuite(
-            'README.txt', package='splinterplone',
+            'tests/basic_features.txt', package='splinterplone',
             test_class=TestCase,
             optionflags=doctest.REPORT_ONLY_FIRST_FAILURE |
                 doctest.NORMALIZE_WHITESPACE | doctest.ELLIPSIS),
