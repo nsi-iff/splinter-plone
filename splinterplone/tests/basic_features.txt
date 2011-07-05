@@ -29,5 +29,7 @@ Basic Features of Splinter-Plone
     Add content type in portal home
     >>> self.portal_login_as_owner()
     >>> self.portal_home()
-    >>> self.portal_add_content_type('Page')
+    >>> self.portal_add_content_type('Document')
+    >>> self.browser.is_text_present('Add Page')
+    True
     >>> self.portal_logout()

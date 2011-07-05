@@ -44,7 +44,7 @@ class TestCase(ptc.FunctionalTestCase):
 
     def portal_add_content_type(self, type):
         self.portal_visit('folder_factories')
-        self.browser.choose('url','http://127.0.0.1:55233/plone/createObject?type_name=Document')
+        self.browser.choose('url','http://%s:%s/plone/createObject?type_name=%s' % (self.host, self.port, type))
         self.browser.find_by_name('form.button.Add').first.click()
 
     def portal_modify_state_for(self, state):
