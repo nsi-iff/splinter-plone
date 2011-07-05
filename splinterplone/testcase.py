@@ -44,3 +44,15 @@ class TestCase(ptc.FunctionalTestCase):
 
     def portal_logout(self):
         self.portal_visit('logout')
+
+    def portal_add_content_type(type):
+        pass
+
+    def portal_modify_state_for(state):
+        pass
+
+    def portal_list_states():
+        pass
+
+    def portal_list_enable_content_types():
+        pass
