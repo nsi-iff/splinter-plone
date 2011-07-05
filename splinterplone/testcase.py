@@ -13,9 +13,6 @@ class TestCase(ptc.FunctionalTestCase):
        self.host, self.port = startZServer()
 
     def afterSetUp(self):
-        """
-        set up our test user
-        """
         self.browser.visit('http://%s:%s/plone' % (self.host, self.port))
 
     def portal_adduser_as_manager(self, user, password):

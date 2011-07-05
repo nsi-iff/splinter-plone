@@ -3,7 +3,6 @@ Basic Features of Splinter-Plone
 ======================
    Login with the owner role
    >>> self.portal_login_as_owner()
-   >>> import pdb;pdb.set_trace()
    >>> self.browser.is_text_present('You are now logged in')
    True
 

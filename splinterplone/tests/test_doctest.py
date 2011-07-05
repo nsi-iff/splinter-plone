@@ -1,9 +1,6 @@
 import unittest
 import doctest
 
-#from zope.testing import doctestunit
-#from zope.component import testing, eventtesting
-
 from Testing import ZopeTestCase as ztc
 
 from splinterplone.testcase import TestCase
@@ -12,7 +9,6 @@ from splinterplone.testcase import TestCase
 def test_suite():
     return unittest.TestSuite([
 
-        # Demonstrate the main content types
         ztc.ZopeDocFileSuite(
             'README.txt', package='splinterplone',
             test_class=TestCase,
