@@ -9,7 +9,7 @@ ptc.setupPloneSite()
 class TestCase(ptc.FunctionalTestCase):
 
     def __init__(self):
-       self.browser = Browser()
+       self.browser = Browser(driver_name='webdriver.firefox')
        self.host, self.port = startZServer()
 
     def afterSetUp(self):
@@ -44,7 +44,8 @@ class TestCase(ptc.FunctionalTestCase):
 
     def portal_add_content_type(self, type):
         self.portal_visit('folder_factories')
-        self.browser.choose('url','http://%s:%s/plone/createObject?type_name=%s' % (self.host, self.port, type))
+        folder_url = self.browser.request_url.rstrip('folder_factories')
+        self.browser.choose('url', folder_url + 'createObject?type_name=%s' % (type))
         self.browser.find_by_name('form.button.Add').first.click()
 
     def portal_modify_state_for(self, state):
