@@ -47,11 +47,12 @@ class TestCase(ptc.FunctionalTestCase):
         self.browser.choose('url','http://%s:%s/plone/createObject?type_name=%s' % (self.host, self.port, type))
         self.browser.find_by_name('form.button.Add').first.click()
 
-    def portal_modify_state_for(self, state):
-        pass
+    def portal_modify_state_to(self, state):
+        self.browser.find_by_id('plone-contentmenu-workflow').first.click()
+        self.browser.click_link_by_text('%s' % (state))
 
     def portal_list_states(self):
-        pass
+        self.browser.find_by_id('plone-contentmenu-workflow').first.click()
 
     def portal_list_enable_content_types(self):
         pass
