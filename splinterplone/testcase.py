@@ -56,4 +56,4 @@ class TestCase(ptc.FunctionalTestCase):
         self.browser.find_by_xpath('//a[@title="Change the state of this item"]').first.click()
 
     def portal_list_enable_content_types(self):
-        pass
+        self.browser.find_by_xpath('//a[@title="Add new items inside this item"]').first.click()
