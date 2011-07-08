@@ -62,7 +62,7 @@ Basic Features of Splinter-Plone
     True
 
     Add content type, for example a Page 
-    >>> self.portal_add_content_type('Document')
+    >>> self.portal_add_content_type('Page')
     >>> self.browser.is_text_present('Add Page')
     True
     >>> self.browser.fill('title','test page')

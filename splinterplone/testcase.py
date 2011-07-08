@@ -43,10 +43,8 @@ class TestCase(ptc.FunctionalTestCase):
         self.portal_visit('logout')
 
     def portal_add_content_type(self, type):
-        self.portal_visit('folder_factories')
-        folder_url = self.browser.url.rstrip('folder_factories')
-        self.browser.choose('url', folder_url + 'createObject?type_name=%s' % (type))
-        self.browser.find_by_name('form.button.Add').first.click()
+        self.portal_list_enable_content_types()
+        self.browser.click_link_by_text('%s' % (type))
 
     def portal_modify_state_to(self, state):
         self.portal_list_states()
