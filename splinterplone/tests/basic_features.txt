@@ -1,30 +1,6 @@
 ======================
 Basic Features of Splinter-Plone
 ======================
-    List portal states, for example home
-
-    >>> self.portal_login_as_owner()
-    >>> self.portal_home()
-    >>> self.portal_list_states()
-    >>> self.browser.is_text_present('Published')
-    True
-    >>> self.browser.is_text_present('Send back')
-    True
-    >>> self.browser.is_text_present('Retract')
-    True
-    >>> self.browser.is_text_present('Advanced...')
-    True
-    >>> self.portal_logout()
-
-    Modify portal state, for example News page
-
-    >>> self.portal_login_as_owner()
-    >>> self.portal_home()
-    >>> self.portal_modify_state_to('Send back')
-    >>> import pdb; pdb.set_trace()
-    >>> self.browser.is_text_present('Private')
-    True
-    >>> self.portal_logout()
 
     Login with the owner role
     >>> self.portal_login_as_owner()
@@ -51,11 +27,35 @@ Basic Features of Splinter-Plone
     >>> self.browser.is_text_present('Site News')
     True
 
+    List portal states, for example home
+
+    >>> self.portal_login_as_owner()
+    >>> self.portal_home()
+    >>> self.portal_list_states()
+    >>> self.browser.is_text_present('Published')
+    True
+    >>> self.browser.is_text_present('Send back')
+    True
+    >>> self.browser.is_text_present('Retract')
+    True
+    >>> self.browser.is_text_present('Advanced...')
+    True
+    >>> self.portal_logout()
+
+    Modify portal state, for example News page
+
+    >>> self.portal_login_as_owner()
+    >>> self.portal_home()
+    >>> self.portal_modify_state_to('Send back')
+    >>> self.browser.is_text_present('Item state changed.')
+    True
+    >>> self.portal_logout()
+
     Add content type in portal home
     >>> self.portal_login_as_owner()
     >>> self.portal_home()
     >>> self.portal_add_content_type('Document')
     >>> self.browser.is_text_present('Add Page')
     True
-    >>> self.browser.portal_logout()
+    >>> self.portal_logout()
 
