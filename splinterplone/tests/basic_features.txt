@@ -69,4 +69,15 @@ Basic Features of Splinter-Plone
     >>> self.browser.find_by_name('form.button.save').first.click()
     >>> self.browser.click_link_by_text('test page')
     >>> self.browser.is_text_present('test page')
+    True
+
+    List content item actions, in news page for example
+    >>> self.portal_visit('news')
+    >>> self.portal_content_item_action()
+    >>> self.browser.is_text_present('Cut')
+    True
+    >>> self.browser.is_text_present('Copy')
+    True
+    >>> self.browser.is_text_present('Delete')
+    True
     >>> self.portal_logout()
