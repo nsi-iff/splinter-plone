@@ -6,7 +6,7 @@ from Products.PloneTestCase.layer import PloneSite
 ptc.setupPloneSite()
 
 
-class TestCase(ptc.FunctionalTestCase):
+class TestCase(ptc.PloneTestCase):
 
     def __init__(self):
        self.browser = Browser(driver_name='webdriver.firefox')
@@ -42,11 +42,11 @@ class TestCase(ptc.FunctionalTestCase):
     def portal_logout(self):
         self.portal_visit('logout')
 
-    def portal_list_enable_content_types(self):
+    def portal_click_enable_content_types(self):
         self.browser.find_by_xpath('//a[@title="Add new items inside this item"]').first.click()
 
     def portal_add_content_type(self, type):
-        self.portal_list_enable_content_types()
+        self.portal_click_enable_content_types()
         self.browser.click_link_by_text('%s' % (type))
 
     def portal_content_item_action(self):

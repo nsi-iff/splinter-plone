@@ -47,7 +47,7 @@ Basic Features of Splinter-Plone
     True
 
     List portal enable content types
-    >>> self.portal_list_enable_content_types()
+    >>> self.portal_click_enable_content_types()
     >>> self.browser.is_text_present('Collection')
     True
     >>> self.browser.is_text_present('Event')
@@ -56,11 +56,14 @@ Basic Features of Splinter-Plone
     True
     >>> self.browser.is_text_present('Folder')
     True
-    >>> self.browser.is_text_present('News item')
+    >>> self.browser.is_text_present('News Item')
     True
     >>> self.browser.is_text_present('Page')
     True
 
+    Close list enable content types
+    >>> self.portal_click_enable_content_types()
+    
     Add content type, for example a Page 
     >>> self.portal_add_content_type('Page')
     >>> self.browser.is_text_present('Add Page')
