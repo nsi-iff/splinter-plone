@@ -49,7 +49,7 @@ class TestCase(ptc.FunctionalTestCase):
         self.browser.find_by_name('form.button.Add').first.click()
 
     def portal_modify_state_to(self, state):
-        self.browser.find_by_xpath('//a[@title="Change the state of this item"]').first.click()
+        self.portal_list_states()
         self.browser.click_link_by_text('%s' % (state))
 
     def portal_list_states(self):
