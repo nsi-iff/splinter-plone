@@ -49,7 +49,7 @@ class TestCase(ptc.FunctionalTestCase):
         self.portal_list_enable_content_types()
         self.browser.click_link_by_text('%s' % (type))
 
-    def portal_content_item_action(self, page_title)
+    def portal_content_item_action(self):
         self.browser.find_by_xpath('//a[@title="Actions for the current content item"]').first.click()
 
     def portal_list_states(self):
