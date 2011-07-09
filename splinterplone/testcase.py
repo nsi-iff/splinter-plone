@@ -1,4 +1,4 @@
-from splinter.browser import Browser 
+from splinter.browser import Browser
 from Testing.ZopeTestCase.utils import startZServer
 from Products.PloneTestCase import PloneTestCase as ptc
 from Products.PloneTestCase.setup import portal_owner, default_password
@@ -9,8 +9,8 @@ ptc.setupPloneSite()
 class TestCase(ptc.PloneTestCase):
 
     def __init__(self):
-       self.browser = Browser(driver_name='webdriver.firefox')
-       self.host, self.port = startZServer()
+        self.browser = Browser(driver_name='webdriver.firefox')
+        self.host, self.port = startZServer()
 
     def afterSetUp(self):
         self.browser.visit('http://%s:%s/plone' % (self.host, self.port))
@@ -33,7 +33,7 @@ class TestCase(ptc.PloneTestCase):
         self.browser.fill('__ac_password', password)
         self.browser.find_by_name('submit').first.click()
 
-    def portal_login_as_manager():
+    def portal_login_as_manager(self):
         self.portal_login(portal_manager, default_password)
 
     def portal_login_as_owner(self):
@@ -41,6 +41,9 @@ class TestCase(ptc.PloneTestCase):
 
     def portal_logout(self):
         self.portal_visit('logout')
+
+    def portal_search(self, search_word):
+        self.browser.fill('SearchableText','%s' % (search_word))
 
     def portal_click_enable_content_types(self):
         self.browser.find_by_xpath('//a[@title="Add new items inside this item"]').first.click()
