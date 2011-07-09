@@ -63,7 +63,7 @@ Basic Features of Splinter-Plone
 
     Close list enable content types
     >>> self.portal_click_enable_content_types()
-    
+
     Add content type, for example a Page 
     >>> self.portal_add_content_type('Page')
     >>> self.browser.is_text_present('Add Page')
@@ -74,13 +74,19 @@ Basic Features of Splinter-Plone
     >>> self.browser.is_text_present('test page')
     True
 
-    List content item actions, in news page for example
+    List content item actions, in "News" page for example
     >>> self.portal_visit('news')
-    >>> self.portal_content_item_action()
+    >>> self.portal_click_content_item_action()
     >>> self.browser.is_text_present('Cut')
     True
     >>> self.browser.is_text_present('Copy')
     True
     >>> self.browser.is_text_present('Delete')
+    True
+    >>> self.portal_click_content_item_action()
+
+    Add content item action, for example rename "News" page
+    >>> portal_add_item_action('Rename')
+    >>> self.browser.is_text_present('Rename item')
     True
     >>> self.portal_logout()
