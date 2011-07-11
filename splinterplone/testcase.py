@@ -49,6 +49,10 @@ class TestCase(ptc.PloneTestCase):
     def portal_navigate_submenu(self, link):
         self.browser.click_link_by_text('%s' % (link))
 
+    def portal_click_a_personaltool(self, personaltool):
+        self.browser.click_link_by_href('http://%s:%s/plone/dashboard' % (self.host, self.port))
+        self.browser.click_link_by_text('%s' % (personaltool))
+
     def portal_click_enable_content_types(self):
         self.browser.find_by_xpath('//a[@title="Add new items inside this item"]').first.click()
 
