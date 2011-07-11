@@ -24,12 +24,16 @@ Basic Features of Splinter-Plone
 
     Visit any page in portal, for example News page
     >>> self.portal_visit('news')
-    >>> self.browser.is_text_present('Site News')
+    >>> self.browser.is_text_present('2 items matching your search terms')
     True
 
     Navigating in portal submenu, for example clicking in "Rules"
     >>> self.portal_navigate_submenu('Rules')
     >>> self.browser.is_text_present('There are currently no active content rules in this Plone Site.')
+
+    Searching in portal, for example the word "news"
+    >>> self.portal_search('news')
+    >>> self.browser.is_text_present('
 
     List portal states, for example home
     >>> self.portal_login_as_owner()
