@@ -44,6 +44,7 @@ class TestCase(ptc.PloneTestCase):
 
     def portal_search(self, search_word):
         self.browser.fill('SearchableText','%s' % (search_word))
+        self.browser.find_by_xpath('//input[@class="searchButton"]').first.click()
 
     def portal_navigate_submenu(self, link):
         self.browser.click_link_by_text('%s' % (link))
