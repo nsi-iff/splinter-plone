@@ -15,6 +15,8 @@ Basic Features of Splinter-Plone
     Create user manager and login
     >>> self.portal_adduser_as_manager('manager','manager')
     >>> self.portal_login('manager','manager')
+    >>> self.browser.is_text_present('You are now logged in')
+    True
     >>> self.portal_logout()
 
     Visit portal home
