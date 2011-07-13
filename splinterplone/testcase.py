@@ -15,9 +15,6 @@ class TestCase(ptc.PloneTestCase):
     def afterSetUp(self):
         self.browser.visit('http://%s:%s/plone' % (self.host, self.port))
 
-    def portal_adduser_as_manager(self, user, password):
-        self.portal.acl_users._doAddUser(user, password, ['Manager'], [])
-
     def beforeTearDown(self):
         self.browser.quit()
 
@@ -52,6 +49,18 @@ class TestCase(ptc.PloneTestCase):
     def portal_click_a_personaltool(self, personaltool):
         self.browser.click_link_by_href('http://%s:%s/plone/dashboard' % (self.host, self.port))
         self.browser.click_link_by_text('%s' % (personaltool))
+
+    def portal_add_user(self, fullname, username, email, password):
+        self.portal_click_a_personaltool('Site Setup')
+        self.browser.click_link_by_text('Users and Groups')
+        self.browser.find_by_name('form.button.AddUser').first.click()
+        self.browser.fill('form.fullname','%s' % (fullname))
+        self.browser.fill('form.username','%s' % (username))
+        self.browser.fill('form.email','%s' % (email))
+        self.browser.fill('form.password','%s' % (password))
+        self.browser.fill('form.password_ctl','%s' % (password))
+        self.browser.find_by_id('form.groups.0').first.click()
+        self.browser.find_by_id('form.actions.register').first.click()
 
     def portal_click_enable_content_types(self):
         self.browser.find_by_xpath('//a[@title="Add new items inside this item"]').first.click()
