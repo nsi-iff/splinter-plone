@@ -1,19 +1,19 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = '0.0'
+version = '0.1.0'
+readme = open('README.rst').read()
 
 setup(name='splinter-plone',
     version=version,
     description="Splinter integration for Plone",
-    long_description="""\
-Integration of Splinter, an open source tool for testing web applications with Plone CMS""",
+    long_description=readme,
     classifiers=[], # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
     keywords='splinter plone cms web acceptance testing',
     author='Ronaldo Amaral',
     author_email='rsantos@iff.edu.br',
-    url='',
-    license='',
+    url='https://github.com/nsi-iff/splinter-plone',
+    license='GNU General Public License',
     packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
     include_package_data=True,
     zip_safe=False,
