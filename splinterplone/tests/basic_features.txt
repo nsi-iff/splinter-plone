@@ -4,6 +4,7 @@ Basic Features of Splinter-Plone
 
     Login with the owner role
     >>> self.portal_login_as_owner()
+    >>> import pdb; pdb.set_trace()
     >>> self.browser.is_text_present('You are now logged in')
     True
 
@@ -43,15 +44,7 @@ Basic Features of Splinter-Plone
     True
 
     Create a user using personal tool
-    >>> self.browser.click_link_by_text('Users and Groups')
-    >>> self.browser.find_by_name('form.button.AddUser').first.click()
-    >>> self.browser.fill('form.fullname','testuser name')
-    >>> self.browser.fill('form.username','testuser')
-    >>> self.browser.fill('form.email','testuser@test.com')
-    >>> self.browser.fill('form.password','password')
-    >>> self.browser.fill('form.password_ctl','password')
-    >>> self.browser.find_by_id('form.groups.0').first.click()
-    >>> self.browser.find_by_id('form.actions.register').first.click()
+    >>> self.portal_add_user('testuser name', 'testuser', 'testuser@test.com', 'password')
     >>> self.browser.is_text_present('testuser name')
     True
 
