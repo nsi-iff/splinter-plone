@@ -65,7 +65,7 @@ class TestCase(ptc.PloneTestCase):
     def portal_change_user_role(self, username, new_role):
         self.portal_click_a_personaltool('Site Setup')
         self.browser.click_link_by_text('Users and Groups')
-        self.browser.find_by_xpath("//table[@class='listing']//tr[td/input[@value='%s']]//input[@value='%s']" % (username, new_role)).first.click()
+        self.browser.find_by_xpath("//tr[*/input[@value='%s']]//input[@value='%s']" % (username, new_role)).first.click()
         self.browser.find_by_name('form.button.Modify').first.click()
 
 

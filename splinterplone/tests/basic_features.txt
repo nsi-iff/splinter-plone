@@ -51,7 +51,7 @@ Basic Features of Splinter-Plone
 
     Changing portal user role
     >>> self.portal_change_user_role('testuser','Manager')
-    >>> self.find_by_xpath("//table[@class='listing']//tr[td/input[@value='testuser']]//input[@value='Manager']").checked
+    >>> self.find_by_xpath("//tr[*/input[@value='testuser']]//input[@value='Manager']").checked
     True
 
     List portal states, for example home
