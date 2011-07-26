@@ -41,7 +41,7 @@ class TestCase(ptc.PloneTestCase):
 
     def portal_search(self, search_word):
         self.browser.fill('SearchableText','%s' % (search_word))
-        self.browser.find_by_xpath('//input[@class="searchButton"]').first.click()
+        self.browser.find_by_css_selector('.searchButton').first.click()
 
     def portal_navigate_submenu(self, option):
         self.browser.find_by_xpath("//li[contains(@id, 'contentview')]/a[text()='%s']" % (option)).first.click()
@@ -70,21 +70,21 @@ class TestCase(ptc.PloneTestCase):
 
 
     def portal_click_enable_content_types(self):
-        self.browser.find_by_xpath('//a[@title="Add new items inside this item"]').first.click()
+        self.browser.find_by_css_selector('a[title="Add new items inside this item"]').first.click()
 
     def portal_add_content_type(self, type):
         self.portal_click_enable_content_types()
         self.browser.click_link_by_text('%s' % (type))
 
     def portal_click_content_item_action(self):
-        self.browser.find_by_xpath('//a[@title="Actions for the current content item"]').first.click()
+        self.browser.find_by_css_selector('a[title="Actions for the current content item"]').first.click()
 
     def portal_add_item_action(self, type):
         self.portal_click_content_item_action()
         self.browser.click_link_by_text('%s' % (type))
 
     def portal_list_states(self):
-        self.browser.find_by_xpath('//a[@title="Change the state of this item"]').first.click()
+        self.browser.find_by_css_selector('a[title="Change the state of this item"]').first.click()
 
     def portal_modify_state_to(self, state):
         self.portal_list_states()
