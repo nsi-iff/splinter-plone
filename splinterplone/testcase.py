@@ -30,9 +30,6 @@ class TestCase(ptc.PloneTestCase):
         self.browser.fill('__ac_password', password)
         self.browser.find_by_name('submit').first.click()
 
-    def portal_login_as_manager(self):
-        self.portal_login(portal_manager, default_password)
-
     def portal_login_as_owner(self):
         self.portal_login(user=portal_owner, password=default_password)
 
@@ -59,6 +56,17 @@ class TestCase(ptc.PloneTestCase):
         self.browser.fill('form.email','%s' % (email))
         self.browser.fill('form.password','%s' % (password))
         self.browser.fill('form.password_ctl','%s' % (password))
+        self.browser.find_by_id('form.actions.register').first.click()
+
+    def portal_add_user_as_manager(self, fullname, username, email, password):
+        self.portal_click_a_personaltool('Site Setup')
+        self.browser.click_link_by_text('Users and Groups')
+        self.browser.find_by_name('form.button.AddUser').first.click()
+        self.browser.fill('form.fullname','%s' % (fullname))
+        self.browser.fill('form.username','%s' % (username))
+        self.browser.fill('form.email','%s' % (email))
+        self.browser.fill('form.password','%s' % (password))
+        self.browser.fill('form.password_ctl','%s' % (password))
         self.browser.find_by_id('form.groups.0').first.click()
         self.browser.find_by_id('form.actions.register').first.click()
 
@@ -67,7 +75,6 @@ class TestCase(ptc.PloneTestCase):
         self.browser.click_link_by_text('Users and Groups')
         self.browser.find_by_xpath("//tr[*/input[@value='%s']]//input[@value='%s']" % (username, new_role)).first.click()
         self.browser.find_by_name('form.button.Modify').first.click()
-
 
     def portal_click_enable_content_types(self):
         self.browser.find_by_css('a[title="Add new items inside this item"]').first.click()

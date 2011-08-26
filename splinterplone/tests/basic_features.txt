@@ -1,6 +1,6 @@
-======================
+================================
 Basic Features of Splinter-Plone
-======================
+================================
 
     Login with the owner role
     >>> self.portal_login_as_owner()
@@ -13,7 +13,9 @@ Basic Features of Splinter-Plone
     True
 
     Create user manager and login
-    >>> self.portal_adduser_as_manager('manager','manager')
+    >>> self.portal_login_as_owner()
+    >>> self.portal_add_user_as_manager('manager name', 'manager','manager@manager.com', 'manager')
+    >>> self.portal_logout()
     >>> self.portal_login('manager','manager')
     >>> self.browser.is_text_present('You are now logged in')
     True
@@ -34,10 +36,12 @@ Basic Features of Splinter-Plone
     >>> self.portal_home()
     >>> self.portal_navigate_submenu('Rules')
     >>> self.browser.is_text_present('There are currently no active content rules in this Plone Site.')
+    True
 
     Searching in portal, for example the word "news"
     >>> self.portal_search('news')
     >>> self.browser.is_text_present('2 items matching your search terms')
+    True
 
     Click a personal tool, for example "Site Setup"
     >>> self.portal_click_a_personaltool('Site Setup')
@@ -48,10 +52,12 @@ Basic Features of Splinter-Plone
     >>> self.portal_add_user('testuser name', 'testuser', 'testuser@test.com', 'password')
     >>> self.browser.is_text_present('testuser name')
     True
+    >>> self.browser.find_by_xpath("//tr[*/input[@value='testuser']]//input[@value='Manager']").checked
+    False
 
     Changing portal user role
     >>> self.portal_change_user_role('testuser','Manager')
-    >>> self.find_by_xpath("//tr[*/input[@value='testuser']]//input[@value='Manager']").checked
+    >>> self.browser.find_by_xpath("//tr[*/input[@value='testuser']]//input[@value='Manager']").checked
     True
 
     List portal states, for example home
@@ -90,7 +96,7 @@ Basic Features of Splinter-Plone
     Close list enable content types
     >>> self.portal_click_enable_content_types()
 
-    Add content type, for example a Page 
+    Add content type, for example a Page
     >>> self.portal_add_content_type('Page')
     >>> self.browser.is_text_present('Add Page')
     True
@@ -110,6 +116,8 @@ Basic Features of Splinter-Plone
     >>> self.browser.is_text_present('Delete')
     True
     >>> self.portal_click_content_item_action()
+    >>> self.is_text_not_present('Cut')
+    True
 
     Add content item action, for example rename "News" page
     >>> portal_add_item_action('Rename')
