@@ -9,7 +9,7 @@ ptc.setupPloneSite()
 class TestCase(ptc.PloneTestCase):
 
     def __init__(self):
-        self.browser = Browser(driver_name='webdriver.firefox')
+        self.browser = Browser(driver_name='firefox')
         self.host, self.port = startZServer()
 
     def afterSetUp(self):
